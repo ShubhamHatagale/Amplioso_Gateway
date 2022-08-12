@@ -637,6 +637,8 @@ router.get(
     }).catch(err => console.log(err));
   }
 );
+
+
 router.get(
   "/company/managers/id/:userId",
   isAuthorized,
