@@ -827,6 +827,17 @@ router.get(
   }
 );
 router.get(
+  "/collect_feedback/manager/:ManId",
+  isAuthorized,
+  (req, res) => {
+    api.get(req.path).then(resp => {
+      return res.send(resp.data);
+    }).catch(err => console.log(err));
+  }
+);
+
+
+router.get(
   "/collect_feedback/:id",
   isAuthorized,
   (req, res) => {
@@ -855,6 +866,17 @@ router.put(
     }).catch(err => console.log(err));
   }
 );
+
+router.put(
+  "/collect_feedback/update/end_date/:id",
+  isAuthorized,
+  (req, res) => {
+    api.put(req.path, req.body).then(resp => {
+      return res.send(resp.data);
+    }).catch(err => console.log(err));
+  }
+);
+
 router.delete(
   "/collect_feedback/:id",
   isAuthorized,
