@@ -132,6 +132,8 @@ router.put(
     }, function (e) { console.log("log is: " + e) })
   }
 );
+
+
 router.delete(
   "/company/:id",
   isAuthorized,
@@ -849,14 +851,36 @@ router.get(
 router.post(
   "/collect_feedback",
   isAuthorized,
+  // (req, res) => {
+  //   api.post(req.path, req.body).then(resp => {
+  //     return res.send(resp.data);
+  //   }).catch(err => {
+  //     res.send({ errors: err });
+  //   });
+  // }
+
+
+  // when we pass the form-data have to use proxy.web
   (req, res) => {
-    api.post(req.path, req.body).then(resp => {
-      return res.send(resp.data);
-    }).catch(err => {
-      res.send({ errors: err });
-    });
+    proxy.web(req, res, {
+      target: BASE_URL,
+    }, function (e) { console.log("log is: " + e) })
+  }
+
+);
+
+
+router.put(
+  "/company/:comId",
+  isAuthorized,
+  (req, res) => {
+    proxy.web(req, res, {
+      target: BASE_URL,
+    }, function (e) { console.log("log is: " + e) })
   }
 );
+
+
 router.put(
   "/collect_feedback/:id",
   isAuthorized,
