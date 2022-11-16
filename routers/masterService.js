@@ -773,21 +773,33 @@ router.get(
 router.post(
   "/employeedetails",
   isAuthorized,
+  // (req, res) => {
+  //   api.post(req.path, req.body).then(resp => {
+  //     return res.send(resp.data);
+  //   }).catch(err => {
+  //     res.send({ errors: err });
+  //   });
+  // }
   (req, res) => {
-    api.post(req.path, req.body).then(resp => {
-      return res.send(resp.data);
-    }).catch(err => {
-      res.send({ errors: err });
-    });
+    proxy.web(req, res, {
+      target: BASE_URL,
+    }, function (e) { console.log("log is: " + e) })
   }
 );
+
 router.put(
   "/employeedetails/:id",
   isAuthorized,
+  // (req, res) => {
+  //   api.put(req.path, req.body).then(resp => {
+  //     return res.send(resp.data);
+  //   }).catch(err => console.log(err));
+  // }
+
   (req, res) => {
-    api.put(req.path, req.body).then(resp => {
-      return res.send(resp.data);
-    }).catch(err => console.log(err));
+    proxy.web(req, res, {
+      target: BASE_URL,
+    }, function (e) { console.log("log is: " + e) })
   }
 );
 
