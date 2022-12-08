@@ -11,6 +11,8 @@ authManagerUser = function (req, res, next) {
     const is_deleted = 0;
     var login_attempt_hashed = crypto.createHash('sha512').update(password).digest('hex');
     console.log(username, login_attempt_hashed);
+    // console.log("username, login_attempt_hashed");
+
     if (
         typeof username == "undefined" ||
         username == "" ||
