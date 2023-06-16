@@ -6,7 +6,8 @@ const streamify = require('stream-array');
 const httpProxy = require('http-proxy');
 const proxy = httpProxy.createProxyServer();
 
-let BASE_URL = "http://localhost:9000/masters";
+const BASE_URL = process.env.BASE_API;
+
 let api = apiAdapter(BASE_URL);
 
 router.get(

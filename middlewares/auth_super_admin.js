@@ -29,7 +29,7 @@ authSuperUser = function (req, res, next) {
             '" AND u.is_deleted=0 AND BINARY u.password="' +
             login_attempt_hashed +
             '"',
-            function (error, results, fields) {
+            function (error, results, fields) {              
                 if (error) {
                     return res.json({
                         code: 400,
